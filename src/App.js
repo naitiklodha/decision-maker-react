@@ -10,6 +10,7 @@ function App() {
       const list = options.concat(optInput);
       setOptions(list);
       setOptInput("");
+      
     }
   }
   function handleChange(e) {
@@ -34,9 +35,9 @@ function App() {
   }
   return (
     <div className="bg-black font-roboto h-screen">
-      <div className="App flex flex-col items-center">
-        <h1 className="text-blue-300 font-Explora text-6xl">Decision Maker</h1>
-        <p className="text-white text-xs">
+      <div className="App flex justify-center flex-col items-center">
+        <h1 className="text-blue-300 font-Explora text-6xl my-4">Decision Maker</h1>
+        <p className="text-white text-xs px-4 mb-4">
           This app was made only for fun. Please do not use it for making real
           life decisions.
         </p>
@@ -53,24 +54,24 @@ function App() {
         )}
 
         {decision ? (
-          <h1 className=" text-4xl mt-10 text-pink-600">{decision} </h1>
+          <h1 className=" text-5xl animate-pulse mt-10 text-pink-600">{decision} </h1>
         ) : (
           <br />
         )}
 
         {decision === "" ? (
-          <div>
+          <div className="flex flex-col justify-center mt-4  md:flex-row">
             <input
               type="text"
               value={optInput}
               placeholder="Enter the options"
               onChange={handleChange}
               onKeyDown={handleKeyDown}
-              className="p-1 rounded-sm   border-none focus:outline-none"
+              className="p-2 rounded-md bg-black text-blue-200 border-2 mb-4  border-white focus:outline-none md:mb-0"
             ></input>
             <button
               type="button"
-              className="ml-4 p-1 rounded-lg w-20  bg-green-500 text-white"
+              className="p-2 px-4 ml-12 rounded-lg w-20  bg-green-500 text-white md:ml-4 md:px-4"
               onClick={handleAdd}
             >
               Add
@@ -88,7 +89,7 @@ function App() {
         <div className="flex  items-center flex-col">
           {options.map((option, index) => (
             <li
-              className="text-lg list-none text-purple-600"
+              className="text-lg list-none text-blue-200"
               key={option + index}
             >
               {option}
@@ -99,7 +100,7 @@ function App() {
         {decision ? (
             <button
               type="button"
-              className="bg-green-600 p-2 px-4 mt-4 rounded-md text-white"
+              className="bg-green-600 p-2 px-8 text-lg mt-8 rounded-md text-white"
               onClick={handleTry}
             >
               Try Again
