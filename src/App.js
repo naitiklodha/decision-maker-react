@@ -10,7 +10,6 @@ function App() {
       const list = options.concat(optInput);
       setOptions(list);
       setOptInput("");
-      
     }
   }
   function handleChange(e) {
@@ -18,32 +17,27 @@ function App() {
   }
   function handleDecision() {
     const decision_index = Math.floor(Math.random() * options.length);
-    console.log(decision_index);
     setDecision(options[decision_index]);
   }
   function handleTry() {
     setDecision("");
     setOptions([]);
   }
-  function handleKeyDown(e)
-  {
-    if(e.key==="Enter")
-    {
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
       handleAdd();
     }
-
   }
   return (
-    <div className="bg-black font-roboto h-screen">
-      <div className="App flex justify-center flex-col items-center">
-        <h1 className="text-blue-300 font-Explora text-6xl my-4">Decision Maker</h1>
-        <p className="text-white text-xs px-4 mb-4">
-          This app was made only for fun. Please do not use it for making real
-          life decisions.
-        </p>
+    <div className="bg-dm-yellow font-roboto h-screen">
+      <div className="flex justify-center flex-col items-center">
+        <h1 className=" text-dm-black font-bold text-6xl my-4">
+          Decision Maker
+        </h1>
+
         {options.length > 1 && decision === "" ? (
           <button
-            className="bg-pink-600  rounded-lg text-white p-2 mt-4"
+            className="bg-dm-neon-blue  rounded-lg text-black p-2 mt-4"
             type="button"
             onClick={handleDecision}
           >
@@ -54,7 +48,9 @@ function App() {
         )}
 
         {decision ? (
-          <h1 className=" text-5xl animate-pulse mt-10 text-pink-600">{decision} </h1>
+          <h1 className=" text-5xl animate-pulse mt-10 text-black">
+            {decision}{" "}
+          </h1>
         ) : (
           <br />
         )}
@@ -67,11 +63,11 @@ function App() {
               placeholder="Enter the options"
               onChange={handleChange}
               onKeyDown={handleKeyDown}
-              className="p-2 rounded-md bg-black text-blue-200 border-2 mb-4  border-white focus:outline-none md:mb-0"
+              className="p-2 rounded-md text-black border-2 mb-4 bg-transparent  border-black focus:outline-none md:mb-0 placeholder:text-gray-800"
             ></input>
             <button
               type="button"
-              className="p-2 px-4 ml-12 rounded-lg w-20  bg-green-500 text-white md:ml-4 md:px-4"
+              className="p-8 py-4 rounded-lg  bg-dm-neon-blue text-dm-black md:ml-4 md:py-2 px-4"
               onClick={handleAdd}
             >
               Add
@@ -82,33 +78,39 @@ function App() {
         )}
 
         {options.length > 0 ? (
-          <h2 className="m-4 text-white">Options added till now: </h2>
+          <h2 className="m-4 text-dm-neon-blue font-bold font-roboto text-xl">
+            Options added till now:{" "}
+          </h2>
         ) : (
           <></>
         )}
         <div className="flex  items-center flex-col">
           {options.map((option, index) => (
-            <li
-              className="text-lg list-none text-blue-200"
-              key={option + index}
-            >
+            <li className="text-lg list-none text-black" key={option + index}>
               {option}
             </li>
           ))}
-     
         </div>
         {decision ? (
-            <button
-              type="button"
-              className="bg-green-600 p-2 px-8 text-lg mt-8 rounded-md text-white"
-              onClick={handleTry}
-            >
-              Try Again
-            </button>
-          ) : (
-            <br></br>
-          )}
+          <button
+            type="button"
+            className="bg-dm-neon-blue p-2 px-8 text-lg mt-8 rounded-md text-dm-black"
+            onClick={handleTry}
+          >
+            Try Again
+          </button>
+        ) : (
+          <br></br>
+        )}
       </div>
+      <footer className="flex flex-col items-center text-xs min-h-16 bg-dm-neon-blue bottom-2 fixed w-screen text-dm-black font-roboto md:bottom-0">
+        <p>
+          This app was made only for fun. Please do not use it for making real
+          life decisions.
+        </p>
+
+        <h1>Developed by Naitik Lodha</h1>
+      </footer>
     </div>
   );
 }
