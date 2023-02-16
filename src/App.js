@@ -5,6 +5,8 @@ function App() {
   const [optInput, setOptInput] = useState("");
   const [decision, setDecision] = useState("");
 
+  const btnStyle="p-8 py-4 rounded-lg  bg-dm-neon-blue hover:bg-purple-500  text-dm-black md:ml-4 md:py-2";
+
   function handleAdd() {
     if (optInput !== "" && optInput !== " " && optInput !== null) {
       const list = options.concat(optInput);
@@ -27,17 +29,18 @@ function App() {
     if (e.key === "Enter") {
       handleAdd();
     }
+
   }
   return (
-    <div className="bg-dm-yellow font-roboto h-screen">
-      <div className="flex justify-center flex-col items-center">
-        <h1 className=" text-dm-black font-bold text-6xl my-4">
+    <div className="flex flex-col items-center bg-dm-yellow font-roboto h-screen">
+      <div className="flex  flex-col items-center">
+        <h1 className=" text-dm-black font-bold text-4xl my-8 md:text-6xl">
           Decision Maker
         </h1>
 
         {options.length > 1 && decision === "" ? (
           <button
-            className="bg-dm-neon-blue  rounded-lg text-black p-2 mt-4"
+            className={btnStyle}
             type="button"
             onClick={handleDecision}
           >
@@ -48,7 +51,7 @@ function App() {
         )}
 
         {decision ? (
-          <h1 className=" text-5xl animate-pulse mt-10 text-black">
+          <h1 className=" text-5xl animate-pulse mt-10 text-pink-500">
             {decision}{" "}
           </h1>
         ) : (
@@ -67,7 +70,7 @@ function App() {
             ></input>
             <button
               type="button"
-              className="p-8 py-4 rounded-lg  bg-dm-neon-blue text-dm-black md:ml-4 md:py-2 px-4"
+              className={btnStyle}
               onClick={handleAdd}
             >
               Add
@@ -84,7 +87,7 @@ function App() {
         ) : (
           <></>
         )}
-        <div className="flex  items-center flex-col">
+        <div className="flex  items-center mb-8 flex-col">
           {options.map((option, index) => (
             <li className="text-lg list-none text-black" key={option + index}>
               {option}
@@ -94,7 +97,7 @@ function App() {
         {decision ? (
           <button
             type="button"
-            className="bg-dm-neon-blue p-2 px-8 text-lg mt-8 rounded-md text-dm-black"
+            className={btnStyle}
             onClick={handleTry}
           >
             Try Again
@@ -103,13 +106,9 @@ function App() {
           <br></br>
         )}
       </div>
-      <footer className="flex flex-col items-center text-xs min-h-16 bg-dm-neon-blue bottom-2 fixed w-screen text-dm-black font-roboto md:bottom-0">
-        <p>
-          This app was made only for fun. Please do not use it for making real
-          life decisions.
-        </p>
+      <footer className="flex flex-col items-center justify-center h-16 bg-dm-neon-blue bottom-0 fixed w-screen text-dm-black font-roboto">
 
-        <h1>Developed by Naitik Lodha</h1>
+        <h1>Developed by <a href="https://github.com/naitik-lodha" className="hover:text-dm-yellow">Naitik Lodha</a></h1>
       </footer>
     </div>
   );
