@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import Typewriter from "typewriter-effect";
 
+
 function App() {
   const [options, setOptions] = useState([]);
   const [optInput, setOptInput] = useState("");
@@ -29,13 +30,16 @@ function App() {
   function handleDecision() {
     const decision_index = Math.floor(Math.random() * options.length);
     setDecision(options[decision_index]);
+    
   }
   function handleTry() {
     setDecision("");
     setOptions([]);
   }
-  function handleTryWithPreviousOptions() {
-    if (options.length > 0) {
+  async function handleTryWithPreviousOptions() {
+   
+    if (options.length > 1) {
+      await setDecision("")
       handleDecision();
     } else {
       handleTry();
@@ -67,7 +71,7 @@ function App() {
               options={{
                 strings: decision,
                 autoStart: true,
-                loop: true,
+                // cursor:"",
               }}
             />
           </div>
@@ -138,7 +142,7 @@ function App() {
           <br></br>
         )}
       </div>
-      <footer className="flex flex-col items-center justify-center h-16 bg-dm-neon-blue bottom-0 fixed w-screen text-dm-black font-roboto">
+      <footer className="flex flex-col items-center justify-center h-12  bg-dm-neon-blue bottom-0 fixed w-screen text-dm-black font-roboto md:h-16">
         <h1>
           Developed with <span className="animate-pulse">❤️</span> by{" "}
           <a
