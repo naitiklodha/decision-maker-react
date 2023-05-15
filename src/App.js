@@ -146,7 +146,7 @@ function App() {
         <h1>
           Developed with <span className="animate-pulse">❤️</span> by{" "}
           <a
-            href="https://github.com/naitik-lodha"
+            href="https://naitik-lodha.netlify.app/"
             className="text-pink-700 font-bold italic underline hover:text-yellow-500"
           >
             Naitik Lodha
